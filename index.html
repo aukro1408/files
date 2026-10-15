@@ -98,10 +98,13 @@ function load(){
     cards=(d.plugins||[]).map((p,i)=>({id:"p"+i,name:p.name,url:p.url,tag:p.tag||"",desc:p.description||"",c:(p.c|0)%PAL.length,author:p.author||""}));
     cards.unshift({id:"loader",locked:true,name:"Плагин для Lampa",tag:"Lampa",desc:"Вставь ссылку в Lampa: Настройки → Расширения → Добавить плагин. Дальше включай нужное в разделе «Мои плагины» (там же кнопка «Синхронизировать каталог»).",url:LOADER_URL,c:3});
     render();
+    if(!unlocked()){$("fPin").value="";pinNext=null;$("pmodal").classList.add("on")}
   });
 }
 function render(){
   const ok=unlocked();
+  document.querySelector(".search").style.display=ok?"":"none";
+  if(!ok){$("grid").innerHTML='<div style="grid-column:1/-1;text-align:center;padding:24px"><button class="btn" data-unlock="1" style="padding:13px 40px">Ввести PIN</button></div>';return}
   const q=query.trim().toLowerCase();
   const list=cards.filter(k=>!q||((k.name||"")+" "+(k.tag||"")+" "+(k.desc||"")+" "+(k.url||"")).toLowerCase().indexOf(q)>=0);
   if(!list.length){$("grid").innerHTML='<div style="color:var(--mut);padding:24px 4px">Ничего не найдено</div>';return}
@@ -128,6 +131,7 @@ $("sw").onclick=e=>{const i=e.target.dataset.i;if(i!=null){col=+i;sw()}};
 function askPin(next){if(unlocked()){next();return}pinNext=next;$("fPin").value="";$("pmodal").classList.add("on")}
 $("grid").onclick=e=>{
   const b=e.target.closest("button");if(!b)return;
+  if(b.dataset.unlock){$("fPin").value="";pinNext=null;$("pmodal").classList.add("on");return}
   if(b.dataset.pin){askPin(()=>{});return}
   if(b.dataset.e){const k=cards.find(k=>k.id==b.dataset.e);if(k&&!k.locked)askPin(()=>open_({...k}));}
   if(b.dataset.c){const k=cards.find(k=>k.id==b.dataset.c);if(k&&k.url){try{navigator.clipboard.writeText(k.url);b.textContent="Скопировано";setTimeout(()=>b.textContent="Копировать",1200)}catch(_){}}}
