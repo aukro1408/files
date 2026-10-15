@@ -1,1 +1,37 @@
-{"updateDate":"2026-10-14","plugins":[{"name":"Дополнительный онлайн с редактором.","url":"https://aukro1408.github.io/dop_online2.js","description":"Дополнительные онлайн-источники с редактором","tag":"Lampa","c":0,"author":""},{"name":"Discovery","url":"https://aukro1408.github.io/discovery2.js","description":"Раздел Discovery","tag":"Lampa","c":1,"author":""},{"name":"Claude тема","url":"https://aukro1408.github.io/claude_theme.js","description":"Тема оформления","tag":"Lampa","c":2,"author":""}]}
+{
+ "updateDate": "2026-10-15",
+ "plugins": [
+  {
+   "name": "Дополнительный онлайн с редактором.",
+   "url": "https://aukro1408.github.io/dop_online2.js",
+   "description": "Дополнительные онлайн-источники с редактором",
+   "tag": "Lampa",
+   "c": 0,
+   "author": ""
+  },
+  {
+   "name": "Discovery",
+   "url": "https://aukro1408.github.io/discovery2.js",
+   "description": "Раздел Discovery",
+   "tag": "Lampa",
+   "c": 1,
+   "author": ""
+  },
+  {
+   "name": "Claude тема",
+   "url": "https://aukro1408.github.io/claude_theme.js",
+   "description": "Тема оформления",
+   "tag": "Lampa",
+   "c": 2,
+   "author": ""
+  },
+  {
+   "name": "Мой bwa с proxy",
+   "url": "https://jolly-resonance-a7b5.flyugertdiana.workers.dev/online.js",
+   "description": "Fovea работает без warp",
+   "tag": "",
+   "c": 3,
+   "author": ""
+  }
+ ]
+}
